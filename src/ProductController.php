@@ -1,7 +1,10 @@
 <?php
 
 class ProductController{
-                                                   //nullable
+    public function __construct(private ProductGateway $gateway){
+
+    }
+                                                    //nullable
     public function processRequest(string $method, ?string $id): void{
         //var_dump($method. "   " . $id);
         if($id){
@@ -11,12 +14,15 @@ class ProductController{
         }
     }
     private function processResourceRequest(string $method, string $id):void{
-
+        echo json_encode($this->gateway->getProductBySize($id));
     }
     private function processCollectionRequest(string $method):void{
         switch($method){
             case "GET":
-                echo json_encode(["id"=>123]);
+                echo json_encode($this->gateway->getAll());
+                break;
+            case "POST":
+                echo json_encode(["id"=>'not specified',"method"=>$method]);
                 break;
     
         }        
