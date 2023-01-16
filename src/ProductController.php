@@ -22,7 +22,13 @@ class ProductController{
                 echo json_encode($this->gateway->getAll());
                 break;
             case "POST":
-                echo json_encode(["id"=>'not specified',"method"=>$method]);
+                $data = (array)json_decode(file_get_contents("php://input",true));
+                // var_dump($data);
+                $id = $this->gateway->create($data);
+                echo json_encode([
+                    "message"=>"Product Created",
+                    "id"=>$id
+                ]);
                 break;
     
         }        

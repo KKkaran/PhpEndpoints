@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST API</title>
+</head>
+<body ng-app="ng-app">
+    <h2>REST API WITH PHP</h2>
+    <div ng-controller="basicController as bc">
+
+        <form>
+            <input type="text" placeholder="Product Name" ng-required="true" ng-model="bc.name">
+            <input type="number" placeholder="size" ng-required="true" ng-model="bc.size">
+            <input type="string" placeholder="is_available" ng-required="true" ng-model="bc.is_available">
+            <button type="submit" ng-click="bc.addProduct()">Submit</button>
+        </form>
+
+    </div>
+
+
+
+
+
+    <script src="./scripts/angular.min.js"></script>
+    <script src="./scripts/app.js"></script>
+</body>
+</html>
