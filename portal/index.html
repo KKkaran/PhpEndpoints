@@ -16,7 +16,25 @@
             <input type="string" placeholder="is_available" ng-required="true" ng-model="bc.is_available">
             <button type="submit" ng-click="bc.addProduct()">Submit</button>
         </form>
-
+        <div>
+            <h3>Items</h3>
+            <div>
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>size</th>
+                    <th>Available</th>
+                </tr>
+                    <tr ng-repeat="b in bc.results">
+                        <td>{{b.id}}</td>
+                        <td>{{b.name}}</td>
+                        <td>{{b.size}}</td>
+                        <td>{{b.is_available}}</td>
+                    </tr>
+            </table>
+            </div>
+        </div>
     </div>
 
 

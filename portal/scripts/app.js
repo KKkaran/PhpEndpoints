@@ -10,8 +10,11 @@
         bc.name = ""
         bc.size = 0
         bc.is_available = ""
+        bc.results = []
         $http.get("http://localhost/Php_Endpoint_REST/products")
-            .then((res) => console.log(res.data))
+            .then((res) => {
+                console.log(res.data)
+                bc.results = res.data})
         
         bc.addProduct = function() {
             bc.name && bc.is_available && add2DB($http);
@@ -34,7 +37,8 @@
                     }
                 ]
             }).then(function(res){
-                console.log(res)
+                res.config.data = {...res.config.data,id:JSON.parse(res.data)["id"]}
+                bc.results = [...bc.results, res.config.data]
             }).catch(err=>console.log(err))
         }
     }
