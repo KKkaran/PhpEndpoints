@@ -18,23 +18,32 @@
         </form>
         <div>
             <h3>Items</h3>
-            <div>
-            <table>
-                <tr>
-                    <th>id</th>
-                    <th>name</th>
-                    <th>size</th>
-                    <th>Available</th>
-                </tr>
-                    <tr ng-repeat="b in bc.results">
-                        <td>{{b.id}}</td>
-                        <td>{{b.name}}</td>
-                        <td>{{b.size}}</td>
-                        <td>{{b.is_available}}</td>
+            <div ng-if="bc.results.length>0">
+                <table>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>size</th>
+                        <th>Available</th>
                     </tr>
-            </table>
+                        <tr ng-repeat="b in bc.results">
+                            <td>{{b.id}}</td>
+                            <td>{{b.name}}</td>
+                            <td>{{b.size}}</td>
+                            <td>{{b.is_available}}</td>
+                        </tr>
+                </table>
+            </div>
+            <div ng-if="!bc.results.length>0">
+                <p>Empty List</p>
             </div>
         </div>
+    </div>
+    <hr>
+    <div ng-controller="asyncController as as">
+        <h4>Async Using $q</h4>
+        <p>Result: {{as.result}}</p>
+        <p>Result: {{as.elapsed}}</p>
     </div>
 
 
